@@ -1,19 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Transform camTransform;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            ClientSend.PlayerShoot(camTransform.forward);
-        }
-    }
-
     private void FixedUpdate()
     {
         SendInputToServer();
