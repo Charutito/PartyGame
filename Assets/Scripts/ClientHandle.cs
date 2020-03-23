@@ -11,11 +11,11 @@ public class ClientHandle : MonoBehaviour
         int _myId = _packet.ReadInt();
 
         Debug.Log($"Message from server: {_msg}");
-        Client.instance.myId = _myId;
+        Client.Instance.myId = _myId;
         ClientSend.WelcomeReceived();
 
         // Now that we have the client's id, connect UDP
-        Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        Client.Instance.udp.Connect(((IPEndPoint)Client.Instance.tcp.socket.Client.LocalEndPoint).Port);
     }
 
     public static void SpawnPlayer(Packet _packet)
@@ -25,7 +25,7 @@ public class ClientHandle : MonoBehaviour
         Vector3 _position = _packet.ReadVector3();
         Quaternion _rotation = _packet.ReadQuaternion();
 
-        GameManager.instance.SpawnPlayer(_id, _username, _position, _rotation);
+        GameManager.Instance.SpawnPlayer(_id, _username, _position, _rotation);
     }
 
     public static void PlayerPosition(Packet _packet)
@@ -73,7 +73,7 @@ public class ClientHandle : MonoBehaviour
         Vector3 _spawnerPosition = _packet.ReadVector3();
         bool _hasItem = _packet.ReadBool();
 
-        GameManager.instance.CreateItemSpawner(_spawnerId, _spawnerPosition, _hasItem);
+        GameManager.Instance.CreateItemSpawner(_spawnerId, _spawnerPosition, _hasItem);
     }
 
     public static void ItemSpawned(Packet _packet)

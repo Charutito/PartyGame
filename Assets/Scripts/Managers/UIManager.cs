@@ -2,26 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GameUtils;
 
-public class UIManager : MonoBehaviour
+public class UIManager : SingletonObject<UIManager>
 {
-    public static UIManager instance;
-
     public GameObject startMenu;
     public InputField usernameField;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Debug.Log("Instance already exists, destroying object!");
-            Destroy(this);
-        }
-    }
 
     /// <summary>Attempts to connect to the server.</summary>
     public void ConnectToServer()

@@ -4,10 +4,10 @@ using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
 using System;
+using GameUtils;
 
-public class Client : MonoBehaviour
+public class Client : SingletonObject<Client>
 {
-    public static Client instance;
     public static int dataBufferSize = 4096;
 
     public string ip = "127.0.0.1";
@@ -19,19 +19,6 @@ public class Client : MonoBehaviour
     private bool isConnected = false;
     private delegate void PacketHandler(Packet _packet);
     private static Dictionary<int, PacketHandler> packetHandlers;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Debug.Log("Instance already exists, destroying object!");
-            Destroy(this);
-        }
-    }
 
     private void Start()
     {
@@ -71,7 +58,7 @@ public class Client : MonoBehaviour
             };
 
             receiveBuffer = new byte[dataBufferSize];
-            socket.BeginConnect(instance.ip, instance.port, ConnectCallback, socket);
+            socket.BeginConnect(Instance.ip, Instance.port, ConnectCallback, socket);
         }
 
         /// <summary>Initializes the newly connected client's TCP-related info.</summary>
@@ -116,7 +103,7 @@ public class Client : MonoBehaviour
                 int _byteLength = stream.EndRead(_result);
                 if (_byteLength <= 0)
                 {
-                    instance.Disconnect();
+                    Instance.Disconnect();
                     return;
                 }
 
@@ -188,7 +175,7 @@ public class Client : MonoBehaviour
         /// <summary>Disconnects from the server and cleans up the TCP connection.</summary>
         private void Disconnect()
         {
-            instance.Disconnect();
+            Instance.Disconnect();
 
             stream = null;
             receivedData = null;
@@ -204,7 +191,7 @@ public class Client : MonoBehaviour
 
         public UDP()
         {
-            endPoint = new IPEndPoint(IPAddress.Parse(instance.ip), instance.port);
+            endPoint = new IPEndPoint(IPAddress.Parse(Instance.ip), Instance.port);
         }
 
         /// <summary>Attempts to connect to the server via UDP.</summary>
@@ -228,7 +215,7 @@ public class Client : MonoBehaviour
         {
             try
             {
-                _packet.InsertInt(instance.myId); // Insert the client's ID at the start of the packet
+                _packet.InsertInt(Instance.myId); // Insert the client's ID at the start of the packet
                 if (socket != null)
                 {
                     socket.BeginSend(_packet.ToArray(), _packet.Length(), null, null);
@@ -250,7 +237,7 @@ public class Client : MonoBehaviour
 
                 if (_data.Length < 4)
                 {
-                    instance.Disconnect();
+                    Instance.Disconnect();
                     return;
                 }
 
@@ -285,7 +272,7 @@ public class Client : MonoBehaviour
         /// <summary>Disconnects from the server and cleans up the UDP connection.</summary>
         private void Disconnect()
         {
-            instance.Disconnect();
+            Instance.Disconnect();
 
             endPoint = null;
             socket = null;

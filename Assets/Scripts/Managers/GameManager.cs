@@ -1,30 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameUtils;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonObject<GameManager>
 {
-    public static GameManager instance;
-
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
     public static Dictionary<int, ItemSpawner> itemSpawners = new Dictionary<int, ItemSpawner>();
 
-    public GameObject localPlayerPrefab;
-    public GameObject playerPrefab;
-    public GameObject itemSpawnerPrefab;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Debug.Log("Instance already exists, destroying object!");
-            Destroy(this);
-        }
-    }
+    [SerializeField] private CameraFollow camera;
+    [SerializeField] private GameObject localPlayerPrefab;
+    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject itemSpawnerPrefab;
 
     /// <summary>Spawns a player.</summary>
     /// <param name="_id">The player's ID.</param>
@@ -37,6 +24,7 @@ public class GameManager : MonoBehaviour
         if (_id == Client.instance.myId)
         {
             _player = Instantiate(localPlayerPrefab, _position, _rotation);
+            camera.target = _player.transform;
         }
         else
         {
