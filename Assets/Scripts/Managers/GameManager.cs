@@ -21,7 +21,7 @@ public class GameManager : SingletonObject<GameManager>
     public void SpawnPlayer(int _id, string _username, Vector3 _position, Quaternion _rotation)
     {
         GameObject _player;
-        if (_id == Client.instance.myId)
+        if (_id == Client.Instance.myId)
         {
             _player = Instantiate(localPlayerPrefab, _position, _rotation);
             camera.target = _player.transform;

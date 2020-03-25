@@ -9,9 +9,8 @@ using GameUtils;
 public class Client : SingletonObject<Client>
 {
     public static int dataBufferSize = 4096;
-
-    public string ip = "127.0.0.1";
-    public int port = 26950;
+    private string ip;
+    private int port;
     public int myId = 0;
     public TCP tcp;
     public UDP udp;
@@ -20,11 +19,6 @@ public class Client : SingletonObject<Client>
     private delegate void PacketHandler(Packet _packet);
     private static Dictionary<int, PacketHandler> packetHandlers;
 
-    private void Start()
-    {
-        tcp = new TCP();
-        udp = new UDP();
-    }
 
     private void OnApplicationQuit()
     {
@@ -34,6 +28,12 @@ public class Client : SingletonObject<Client>
     /// <summary>Attempts to connect to the server.</summary>
     public void ConnectToServer()
     {
+        ip = UIManager.Instance.ipField.text;
+        port = Int32.Parse(UIManager.Instance.portField.text);
+
+        tcp = new TCP();
+        udp = new UDP();
+
         InitializeClientData();
 
         isConnected = true;
