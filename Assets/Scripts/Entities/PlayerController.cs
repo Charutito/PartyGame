@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Managers;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,13 +11,11 @@ public class PlayerController : MonoBehaviour
     /// <summary>Sends player input to the server.</summary>
     private void SendInputToServer()
     {
-        bool[] _inputs = new bool[]
+
+        float[] _inputs = new float[]
         {
-            Input.GetKey(KeyCode.W),
-            Input.GetKey(KeyCode.S),
-            Input.GetKey(KeyCode.A),
-            Input.GetKey(KeyCode.D),
-            Input.GetKey(KeyCode.Space)
+            InputManager.Instance.AxisHorizontal,
+            InputManager.Instance.AxisVertical
         };
 
         ClientSend.PlayerMovement(_inputs);

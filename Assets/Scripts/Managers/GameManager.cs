@@ -9,7 +9,7 @@ public class GameManager : SingletonObject<GameManager>
     public static Dictionary<int, ItemSpawner> itemSpawners = new Dictionary<int, ItemSpawner>();
 
     [SerializeField] private CameraFollow camera;
-    [SerializeField] private GameObject localPlayerPrefab;
+    [SerializeField] public GameObject localPlayerPrefab;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject itemSpawnerPrefab;
 
