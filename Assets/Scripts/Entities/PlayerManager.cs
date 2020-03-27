@@ -9,13 +9,18 @@ public class PlayerManager : MonoBehaviour
     public float health;
     public float maxHealth = 100f;
     public int itemCount = 0;
-    //public MeshRenderer model;
 
+    [SerializeField]
+    private GameObject shadowFX;
+    [SerializeField]
+    private GameObject rendererFX;
+        
     public Vector3 realpos;
 
     public void FixedUpdate()
     {
         transform.position = Vector3.Lerp(transform.position, realpos, 0.1f);
+
     }
 
     public void Initialize(int _id, string _username)
@@ -37,12 +42,15 @@ public class PlayerManager : MonoBehaviour
 
     public void Die()
     {
-        //model.enabled = false;
+        //TODO animacion de muerte
+        shadowFX.SetActive(false);
+        rendererFX.SetActive(false);
     }
 
     public void Respawn()
     {
-        //model.enabled = true;
         SetHealth(maxHealth);
+        shadowFX.SetActive(true);
+        rendererFX.SetActive(true);
     }
 }
