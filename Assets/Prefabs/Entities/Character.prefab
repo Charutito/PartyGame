@@ -195,6 +195,8 @@ MonoBehaviour:
   health: 0
   maxHealth: 100
   itemCount: 0
+  shadowFX: {fileID: 4355040527546601245}
+  rendererFX: {fileID: 9186597662401445011}
   realpos: {x: 0, y: 0, z: 0}
 --- !u!114 &7743132014806154718
 MonoBehaviour:
