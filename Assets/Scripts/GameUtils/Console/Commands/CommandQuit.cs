@@ -23,14 +23,11 @@ namespace Console
 
         public override void RunCommand()
         {
-            if (Application.isEditor)
-            {
-                UnityEditor.EditorApplication.isPlaying = false;
-            }
-            else
-            {
-                Application.Quit();
-            }
+            #if UNITY_EDITOR
+                     UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                     Application.Quit();
+            #endif
         }
 
         public static CommandQuit CreateCommand()

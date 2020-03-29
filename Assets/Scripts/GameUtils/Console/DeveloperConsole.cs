@@ -24,7 +24,7 @@ namespace Console
 
         private void Start()
         {
-            consoleCanvas.gameObject.SetActive(false);
+            Instance.consoleInput.Select();
             CreateCommands();
         }
 
@@ -58,12 +58,6 @@ namespace Console
         
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.BackQuote))
-            {
-                consoleCanvas.gameObject.SetActive(!consoleCanvas.gameObject.activeInHierarchy);
-                Instance.consoleInput.Select();
-            }
-
             if (consoleCanvas.gameObject.activeInHierarchy)
             {
                 if (Input.GetKeyDown(KeyCode.Return))

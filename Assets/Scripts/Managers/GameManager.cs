@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameUtils;
+using Managers;
+using Console;
 
 public class GameManager : SingletonObject<GameManager>
 {
@@ -12,6 +14,9 @@ public class GameManager : SingletonObject<GameManager>
     [SerializeField] public GameObject localPlayerPrefab;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject itemSpawnerPrefab;
+    [SerializeField] private DeveloperConsole consolePrefab;
+
+    private DeveloperConsole consoleInstance;
 
     /// <summary>Spawns a player.</summary>
     /// <param name="_id">The player's ID.</param>
@@ -40,5 +45,26 @@ public class GameManager : SingletonObject<GameManager>
         GameObject _spawner = Instantiate(itemSpawnerPrefab, _position, itemSpawnerPrefab.transform.rotation);
         _spawner.GetComponent<ItemSpawner>().Initialize(_spawnerId, _hasItem);
         itemSpawners.Add(_spawnerId, _spawner.GetComponent<ItemSpawner>());
+    }
+
+    void Update()
+    {
+        CallConsole();
+    }
+
+    void CallConsole()
+    {
+        if (InputManager.Instance.OpenConsole)
+        {
+            if (consoleInstance != null)
+            {
+                consoleInstance.consoleCanvas.gameObject.SetActive(!consoleInstance.consoleCanvas.gameObject.activeInHierarchy);
+            }
+            else
+            {
+                consoleInstance = Instantiate(consolePrefab, consolePrefab.transform.position, Quaternion.identity);
+                consoleInstance.consoleCanvas.gameObject.SetActive(true);
+            }
+        }
     }
 }
