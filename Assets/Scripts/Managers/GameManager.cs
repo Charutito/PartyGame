@@ -18,17 +18,17 @@ public class GameManager : SingletonObject<GameManager>
     /// <param name="_name">The player's name.</param>
     /// <param name="_position">The player's starting position.</param>
     /// <param name="_rotation">The player's starting rotation.</param>
-    public void SpawnPlayer(int _id, string _username, Vector3 _position, Quaternion _rotation)
+    public void SpawnPlayer(int _id, string _username, Vector3 _position)
     {
         GameObject _player;
         if (_id == Client.Instance.myId)
         {
-            _player = Instantiate(localPlayerPrefab, _position, _rotation);
+            _player = Instantiate(localPlayerPrefab, _position, Quaternion.identity);
             camera.target = _player.transform;
         }
         else
         {
-            _player = Instantiate(playerPrefab, _position, _rotation);
+            _player = Instantiate(playerPrefab, _position, Quaternion.identity);
         }
 
         _player.GetComponent<PlayerManager>().Initialize(_id, _username);
