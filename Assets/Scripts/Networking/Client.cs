@@ -284,7 +284,8 @@ public class Client : SingletonObject<Client>
     {
         packetHandlers = new Dictionary<int, PacketHandler>()
         {
-            { (int)ServerPackets.welcome, ClientHandle.Welcome },
+            { (int)ServerPackets.welcome, GameManager.Welcome },
+            { (int)ServerPackets.loadArena, LevelArenaLoader.LoadArena },
             { (int)ServerPackets.spawnPlayer, ClientHandle.SpawnPlayer },
             { (int)ServerPackets.playerPosition, ClientHandle.PlayerPosition },
             { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation },
