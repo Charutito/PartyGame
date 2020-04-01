@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Console;
 using GameUtils;
 using Managers;
-using Console;
+using System.Collections.Generic;
+using System.Net;
+using UnityEngine;
 
 public class GameManager : SingletonObject<GameManager>
 {
@@ -17,6 +17,19 @@ public class GameManager : SingletonObject<GameManager>
     [SerializeField] private DeveloperConsole consolePrefab;
 
     private DeveloperConsole consoleInstance;
+
+    public static void Welcome(Packet _packet)
+    {
+        string _msg = _packet.ReadString();
+        int _myId = _packet.ReadInt();
+
+        Debug.Log($"Message from server: {_msg}");
+        Client.Instance.myId = _myId;
+        ClientSend.WelcomeReceived();
+
+        // Now that we have the client's id, connect UDP
+        Client.Instance.udp.Connect(((IPEndPoint)Client.Instance.tcp.socket.Client.LocalEndPoint).Port);
+    }
 
     /// <summary>Spawns a player.</summary>
     /// <param name="_id">The player's ID.</param>
