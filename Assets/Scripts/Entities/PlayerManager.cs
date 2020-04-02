@@ -19,8 +19,7 @@ public class PlayerManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, realpos, 0.1f);
-
+        transform.position = Vector3.Lerp(transform.position, realpos, 0.25f);
     }
 
     public void Initialize(int _id, string _username)
