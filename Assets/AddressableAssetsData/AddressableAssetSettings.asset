@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
   m_DefaultGroup: 01189c8be63906e448215de42dabe763
-  m_BuildRemoteCatalog: 1
+  m_BuildRemoteCatalog: 0
   m_DisableCatalogUpdateOnStart: 0
   m_UniqueBundleIds: 0
   m_RemoteCatalogBuildPath:
-    m_Id: 14cc20ee46c599046b6e8a75142278b3
+    m_Id: 9a79a6301ed834f448da7b0d2f48633c
   m_RemoteCatalogLoadPath:
-    m_Id: 2e91aac32da1bfe4b870e761a5f1f95c
+    m_Id: afbc4943444ca154793c3294bdcfc0bf
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: 4d96874403a5f1242b340623567e3730, type: 2}
