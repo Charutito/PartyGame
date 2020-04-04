@@ -294,7 +294,9 @@ public class Client : SingletonObject<Client>
             { (int)ServerPackets.playerRespawned, ClientHandle.PlayerRespawned },
             { (int)ServerPackets.createItemSpawner, ClientHandle.CreateItemSpawner },
             { (int)ServerPackets.itemSpawned, ClientHandle.ItemSpawned },
-            { (int)ServerPackets.itemPickedUp, ClientHandle.ItemPickedUp }
+            { (int)ServerPackets.itemPickedUp, ClientHandle.ItemPickedUp },
+            { (int)ServerPackets.skillCasted, SkillHandle.SkillCasted },
+            { (int)ServerPackets.skillPosition, SkillHandle.SkillPosition }
         };
         Debug.Log("Initialized packets.");
     }

@@ -198,6 +198,7 @@ MonoBehaviour:
   itemCount: 0
   shadowFX: {fileID: 4355040527546601245}
   rendererFX: {fileID: 9186597662401445011}
+  currentSkill: {fileID: 11400000, guid: 0e7728fabbedaec40a5174c2b9a62f35, type: 2}
   realpos: {x: 0, y: 0, z: 0}
 --- !u!114 &7743132014806154718
 MonoBehaviour:

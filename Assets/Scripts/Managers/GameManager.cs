@@ -1,6 +1,7 @@
 ﻿using Console;
 using GameUtils;
 using Managers;
+using SkillSystem;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class GameManager : SingletonObject<GameManager>
 {
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
     public static Dictionary<int, ItemSpawner> itemSpawners = new Dictionary<int, ItemSpawner>();
+    public static Dictionary<string, SkillBehavior> allSkills = new Dictionary<string, SkillBehavior>();
 
     [SerializeField] private CameraFollow camera;
     [SerializeField] public GameObject localPlayerPrefab;
