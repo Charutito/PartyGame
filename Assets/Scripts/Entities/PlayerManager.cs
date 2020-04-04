@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SkillSystem;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -14,7 +15,10 @@ public class PlayerManager : MonoBehaviour
     private GameObject shadowFX;
     [SerializeField]
     private GameObject rendererFX;
-        
+
+    //SKILLS
+    public SkillDefinition currentSkill;
+
     public Vector3 realpos;
 
     public void FixedUpdate()

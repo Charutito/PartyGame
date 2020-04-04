@@ -50,11 +50,12 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    public static void PlayerShoot(Vector3 _facing)
+    public static void PlayerShoot(Vector3 _facingDirection, string _skillId)
     {
         using (Packet _packet = new Packet((int)ClientPackets.playerShoot))
         {
-            _packet.Write(_facing);
+            _packet.Write(_facingDirection);
+            _packet.Write(_skillId);
 
             SendTCPData(_packet);
         }
