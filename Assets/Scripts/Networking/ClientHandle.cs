@@ -53,28 +53,19 @@ public class ClientHandle : MonoBehaviour
         GameManager.players[_id].Respawn();
     }
 
-    public static void CreateItemSpawner(Packet _packet)
+    public static void CreatePickupableSkill(Packet _packet)
     {
-        int _spawnerId = _packet.ReadInt();
-        Vector3 _spawnerPosition = _packet.ReadVector3();
-        bool _hasItem = _packet.ReadBool();
+        string skillId = _packet.ReadString();
+        Vector3 spawnPosition = _packet.ReadVector3();
 
-        GameManager.Instance.CreateItemSpawner(_spawnerId, _spawnerPosition, _hasItem);
+        SkillSpawnerManager.Instance.SpawnPickupableSkill(skillId, spawnPosition);
     }
 
-    public static void ItemSpawned(Packet _packet)
+    public static void SkillPickedUp(Packet _packet)
     {
-        int _spawnerId = _packet.ReadInt();
+        string skillId = _packet.ReadString();
+        int _id = _packet.ReadInt();
 
-        GameManager.itemSpawners[_spawnerId].ItemSpawned();
-    }
-
-    public static void ItemPickedUp(Packet _packet)
-    {
-        int _spawnerId = _packet.ReadInt();
-        int _byPlayer = _packet.ReadInt();
-
-        GameManager.itemSpawners[_spawnerId].ItemPickedUp();
-        GameManager.players[_byPlayer].itemCount++;
+        GameManager.players[_id].SetSkill(skillId);
     }
 }

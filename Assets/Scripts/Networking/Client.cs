@@ -292,11 +292,10 @@ public class Client : SingletonObject<Client>
             { (int)ServerPackets.playerDisconnected, ClientHandle.PlayerDisconnected },
             { (int)ServerPackets.playerHealth, ClientHandle.PlayerHealth },
             { (int)ServerPackets.playerRespawned, ClientHandle.PlayerRespawned },
-            { (int)ServerPackets.createItemSpawner, ClientHandle.CreateItemSpawner },
-            { (int)ServerPackets.itemSpawned, ClientHandle.ItemSpawned },
-            { (int)ServerPackets.itemPickedUp, ClientHandle.ItemPickedUp },
             { (int)ServerPackets.skillCasted, SkillHandle.SkillCasted },
-            { (int)ServerPackets.skillPosition, SkillHandle.SkillPosition }
+            { (int)ServerPackets.skillPosition, SkillHandle.SkillPosition },
+            { (int)ServerPackets.skillSpawned, ClientHandle.CreatePickupableSkill },
+            { (int)ServerPackets.skillPickedUp, ClientHandle.SkillPickedUp }
         };
         Debug.Log("Initialized packets.");
     }

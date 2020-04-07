@@ -102,9 +102,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6086891420968901616}
-  - component: {fileID: 8100622297009674454}
+  - component: {fileID: -245647221020646512}
   m_Layer: 0
-  m_Name: ShootingSkill
+  m_Name: DefaultSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,14 +118,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4875258927059752349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.514496, y: 177.14218, z: -128.53949}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3501287616686984600}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8100622297009674454
+--- !u!114 &-245647221020646512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,9 +134,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4875258927059752349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18f8898cbd7de7d45a807941e4b816d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a360c6fca3a9194d865883f0eac094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Definition: {fileID: 11400000, guid: 0e7728fabbedaec40a5174c2b9a62f35, type: 2}
+  Definition: {fileID: 11400000, guid: 0993130297af6604182e4a9751277a19, type: 2}
   UniqueId: 
   realPos: {x: 0, y: 0, z: 0}

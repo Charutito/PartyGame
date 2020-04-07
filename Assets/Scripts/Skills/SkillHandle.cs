@@ -18,7 +18,6 @@ public class SkillHandle : MonoBehaviour
     {
         int _byPlayer = _packet.ReadInt();
         string _uniqueKey = _packet.ReadString();
-
         PlayerManager player = GameManager.players[_byPlayer];
 
         SkillBehavior behavior = player.currentSkill.Cast(player.currentSkill.Behavior, player.transform.position, Quaternion.identity);
