@@ -56,4 +56,10 @@ public class PlayerManager : MonoBehaviour
         shadowFX.SetActive(true);
         rendererFX.SetActive(true);
     }
+
+    public void SetSkill(string skillId)
+    {
+        Debug.Log("--- Player " + id + " now have the skill: " + skillId);
+        currentSkill = SkillSpawnerManager.Instance.GetSkill(skillId);
+    }
 }
