@@ -10,6 +10,7 @@ namespace SkillSystem
     {
         [Header("UI")]
         public string Name = string.Empty;
+        public Texture2D Texture;
 
         [Header("Cast")]
         public GameObject Prefab;

@@ -16,6 +16,7 @@ public class GameManager : SingletonObject<GameManager>
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject itemSpawnerPrefab;
     [SerializeField] private DeveloperConsole consolePrefab;
+    [SerializeField] private GameObject crosshairPrefab;
 
     private DeveloperConsole consoleInstance;
 
@@ -52,6 +53,9 @@ public class GameManager : SingletonObject<GameManager>
 
         _player.GetComponent<PlayerManager>().Initialize(_id, _username);
         players.Add(_id, _player.GetComponent<PlayerManager>());
+
+        crosshairPrefab.SetActive(true);
+        Cursor.visible = false;
     }
 
     void Update()
