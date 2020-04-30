@@ -18,12 +18,17 @@ public class PlayerManager : MonoBehaviour
 
     //SKILLS
     public SkillDefinition currentSkill;
+    public GameObject skillPivot;
 
     public Vector3 realpos;
+    public Vector3 skillRotation;
+    public Vector3 worldPosition;
 
     public void FixedUpdate()
     {
         transform.position = Vector3.Lerp(transform.position, realpos, 0.25f);
+
+        SetRotation(skillRotation);
     }
 
     public void Initialize(int _id, string _username)
@@ -59,7 +64,13 @@ public class PlayerManager : MonoBehaviour
 
     public void SetSkill(string skillId)
     {
-        Debug.Log("--- Player " + id + " now have the skill: " + skillId);
         currentSkill = SkillSpawnerManager.Instance.GetSkill(skillId);
+        Destroy(skillPivot.transform.GetChild(0));
+        Instantiate(currentSkill.TexturePrefab, skillPivot.transform);
+    }
+
+    public void SetRotation(Vector3 rotation)
+    {
+        skillPivot.transform.right = rotation;
     }
 }

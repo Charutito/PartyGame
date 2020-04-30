@@ -13,6 +13,7 @@ namespace Managers
         public float AxisVertical { get { return Input.GetAxisRaw("Vertical"); } }
         public bool OpenConsole { get { return Input.GetKeyDown(KeyCode.BackQuote); } }
         public bool CastSkill { get { return Input.GetButtonDown("Fire1"); } }
+        public Vector3 MousePosition { get { return Input.mousePosition; } }
         #endregion
     }
 }

@@ -295,7 +295,8 @@ public class Client : SingletonObject<Client>
             { (int)ServerPackets.skillCasted, SkillHandle.SkillCasted },
             { (int)ServerPackets.skillPosition, SkillHandle.SkillPosition },
             { (int)ServerPackets.skillSpawned, ClientHandle.CreatePickupableSkill },
-            { (int)ServerPackets.skillPickedUp, ClientHandle.SkillPickedUp }
+            { (int)ServerPackets.skillPickedUp, ClientHandle.SkillPickedUp },
+            { (int)ServerPackets.playerSkillRotation, ClientHandle.PlayerSkillRotation }
         };
         Debug.Log("Initialized packets.");
     }

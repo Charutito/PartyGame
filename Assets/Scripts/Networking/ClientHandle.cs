@@ -68,4 +68,12 @@ public class ClientHandle : MonoBehaviour
 
         GameManager.players[_id].SetSkill(skillId);
     }
+
+    public static void PlayerSkillRotation(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        Vector3 _rotation = _packet.ReadVector3();
+
+        GameManager.players[_id].skillRotation = _rotation;
+    }
 }
