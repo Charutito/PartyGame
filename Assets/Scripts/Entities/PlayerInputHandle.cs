@@ -5,6 +5,8 @@ public class PlayerInputHandle : MonoBehaviour
 {
     private PlayerManager playerManager;
 
+    private Vector3 worldPosition;
+
     private void Start()
     {
         playerManager = GetComponent<PlayerManager>();
@@ -12,6 +14,7 @@ public class PlayerInputHandle : MonoBehaviour
 
     private void FixedUpdate()
     {
+        GetWorldPosition();
         SendInputToServer();
     }
 
@@ -30,5 +33,18 @@ public class PlayerInputHandle : MonoBehaviour
         }
 
         ClientSend.PlayerMovement(_inputs);
+        ClientSend.PlayerSkillRotation(worldPosition);
+    }
+
+    private void GetWorldPosition()
+    {
+        Plane plane = new Plane(Vector3.up, 0);
+        float distance;
+        Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.MousePosition);
+
+        if (plane.Raycast(ray, out distance))
+        {
+            worldPosition = ray.GetPoint(distance);
+        }
     }
 }

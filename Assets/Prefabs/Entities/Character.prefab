@@ -230,12 +230,11 @@ MonoBehaviour:
   itemCount: 0
   shadowFX: {fileID: 4355040527546601245}
   rendererFX: {fileID: 9186597662401445011}
-  skillFX: {fileID: 4481373707641696557}
   currentSkill: {fileID: 11400000, guid: 0993130297af6604182e4a9751277a19, type: 2}
+  skillPivot: {fileID: 4481373707641696557}
   realpos: {x: 0, y: 0, z: 0}
+  skillRotation: {x: 0, y: 0, z: 0}
   worldPosition: {x: 0, y: 0, z: 0}
-  worldPositionHolder: {fileID: 702633635461683921, guid: 0e1be693d88805145b79cb0905d1687b,
-    type: 3}
 --- !u!114 &7743132014806154718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7475046847795315718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.728, y: 0, z: 0}
+  m_LocalPosition: {x: 0.18, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6393910097322282389}

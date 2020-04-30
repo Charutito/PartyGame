@@ -15,18 +15,20 @@ public class PlayerManager : MonoBehaviour
     private GameObject shadowFX;
     [SerializeField]
     private GameObject rendererFX;
-    [SerializeField] private GameObject skillPivot;
+
     //SKILLS
     public SkillDefinition currentSkill;
+    public GameObject skillPivot;
 
     public Vector3 realpos;
+    public Vector3 skillRotation;
     public Vector3 worldPosition;
 
     public void FixedUpdate()
     {
         transform.position = Vector3.Lerp(transform.position, realpos, 0.25f);
 
-        SetRotation();
+        SetRotation(skillRotation);
     }
 
     public void Initialize(int _id, string _username)
@@ -67,19 +69,8 @@ public class PlayerManager : MonoBehaviour
         Instantiate(currentSkill.TexturePrefab, skillPivot.transform);
     }
 
-    public void SetRotation()
+    public void SetRotation(Vector3 rotation)
     {
-        Plane plane = new Plane(Vector3.up, 0);
-        float distance;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (plane.Raycast(ray, out distance))
-        {
-            worldPosition = ray.GetPoint(distance);
-        }
-
-        Vector3 direction = worldPosition - transform.position;
-        direction.y = 0f;
-        skillPivot.transform.right = direction;
+        skillPivot.transform.right = rotation;
     }
 }
